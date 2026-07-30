@@ -9,6 +9,8 @@ namespace DeleteVehicle.Server
 {
     public class Main : IScript
     {
+        internal const string EVENT_SHOW_NOTIFICATION = "DeleteVehicle:Client:ShowNotification";
+
         public async void Initialize()
         {
             API.Log.Info("Delete vehicle initialized");
@@ -26,6 +28,8 @@ namespace DeleteVehicle.Server
                 if (ped == null)
                 {
                     API.Log.Warn("Player ped is null");
+
+                    API.EmitClient(player.Handle, EVENT_SHOW_NOTIFICATION, "~r~Could not delete vehicle~s~", true);
 
                     return;
                 }
@@ -45,7 +49,7 @@ namespace DeleteVehicle.Server
 
                 if (vehicle is null || !Native.DoesEntityExist(vehicle.Handle))
                 {
-                    API.Log.Warn("No vehicle found near player");
+                    API.EmitClient(player.Handle, EVENT_SHOW_NOTIFICATION, "~r~No vehicle found near player~s~", true);
 
                     return;
                 }
@@ -64,12 +68,14 @@ namespace DeleteVehicle.Server
             {
                 if (!Native.DoesEntityExist(vehicle.Handle))
                 {
-                    API.Log.Warn("Vehicle does not exist");
+                    API.EmitClient(player.Handle, EVENT_SHOW_NOTIFICATION, "~r~Vehicle does not exist~s~", true);
 
                     return;
                 }
 
                 API.Vehicles.Remove(vehicle);
+
+                API.EmitClient(player.Handle, EVENT_SHOW_NOTIFICATION, "~g~Vehicle deleted!~s~", false);
 
                 API.Log.Info($"{player.Name} ({player.Handle}) deleted vehicle {vehicle.Model} ({vehicle.NumberPlateText})");
             }

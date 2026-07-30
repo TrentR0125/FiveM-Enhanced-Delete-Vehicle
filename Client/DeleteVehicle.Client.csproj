@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net10.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+
+		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+
+		<BaseOutputPath>..\bld\</BaseOutputPath>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="CitizenFX.FiveM.Client" Version="0.0.1-alpha" />
+	</ItemGroup>
+
+</Project>
