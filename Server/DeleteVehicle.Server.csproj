@@ -11,7 +11,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="CitizenFX.FiveM.Server" Version="0.0.2-alpha" />
+    <PackageReference Include="CitizenFX.FiveM.Server" Version="0.0.3-alpha" />
   </ItemGroup>
 
   <ItemGroup>

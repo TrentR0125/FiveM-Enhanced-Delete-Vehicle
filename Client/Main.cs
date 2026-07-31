@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Text;
 
 using CitizenFX.FiveM.Client;
-using CitizenFX.FiveM.Server;
 using CitizenFX.FiveM.Shared.Script;
 
 namespace DeleteVehicle.Client
@@ -15,7 +14,7 @@ namespace DeleteVehicle.Client
             API.Log.Info("Client on");
         }
 
-        [OnEvent("DeleteVehicle:Client:ShowNotification")]
+        [OnNetEvent("DeleteVehicle:Client:ShowNotification")]
         internal void OnShowNotification(string message, bool flash)
         {
             Native.SetNotificationTextEntry("STRING");
